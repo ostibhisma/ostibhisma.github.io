@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="css/main.css">
+    <title>Bhisma Osti</title>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="../index.html">Bhisma Osti</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../blog.html">Blog</a>
+          </nav>
+    </div>
+
+   <div class="container">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+    <h1>Linear Regression From Scratch</h1><hr>
+    <p>A statistical measure that attempts to determine the strength of the relationship between one dependent variable and one or more independent variables is called regression. Regression analysis is widely used for prediction and forecasting. For example, If we want to predict the price of the house based on its location, area, etc then it is a regression problem. Here, I talked about dependent and independent variables. Let us have a look at it! Independent variables are those which are input to a system and may take on different values freely. It is also called a predictor or explanatory variable and it is denoted by ‘X’. Dependent variables are those that change as a consequence of changes in other values in the system. It is also called a target or response variable and is denoted by ‘y’.</p>
+    <h5>What is a Linear Regression?</h5>
+    
+    <p>The Linear Regression is a method for predicting the value of a dependent variable ‘y’, based on the value of an independent variable ‘X’.There are two types of linear regression. They are:- Simple Linear Regression: Having only one independent variable, and Multiple Linear Regression: Having two or more than two independent variables. The equation of simple linear regression is:</p>
+    
+    <p><i>y = b + a*X +e</i></p>
+    
+    <p>here, y = dependent variable , X = independent variable , b =y-intercept , a = slope of line and e= error variable</p>
+    
+    <p>The slope of a line is the change in y for a one-unit increase in X and y-intercept is the height at which the line crosses the vertical axis and is obtained by setting X=0 in equations.</p>
+    
+    <p>Our goal is to choose values that minimize the Sum of Squared Error (SSE) of observed values.</p>
+    <img src="images/Linear_Regression01/ss.png"><br>
+    <i>figure 1: The sum of square formula</i>
+    
+    <p>Following is the code in python to look at simple linear regression</p>
+    <img src="images/Linear_Regression01/sss.png"><br>
+    <img src="images/Linear_Regression01/sssss.png"><br>
+    
+    <p>Here we import all the libraries, numpy is scientific computing tool, pandas is used for reading a text file and some data wrangling stuff, matplotlib is for data visualization and sklearn for computing LinearRegression.Here, we see that we load the dataset having the area and price of the house. The area is independent and the price is the dependent variable.
+    </p>
+    <img src="images/Linear_Regression01/s2.png"><br>
+    <p>Here, we plot our data using matplotlib library. In the x-axis, there is an area and on the y-axis, there is a price variable. we can see from data that as the area of house increases, the price also increases. Thus there is some positive correlation between these two variables.</p>
+    <img src="images/Linear_Regression01/s3.png"><br>
+    
+    <p>Now, we load our LinearRegression model from sklearn and we fit our training data to train our model. From the training, we see that the coefficient(i.e ‘a’ from our y=b+aX+e ) is 1.19303364 and y-intercept(i.e ‘b’ from our y=b+aX+e) is -3.8957… . Thus, using these parameters we predict the price of the house of a given area.</p>
+    <img src="images/Linear_Regression01/s5.png"><br>
+    
+    <p>Finally, we predict the price of the house for a given area i.e 20. We plot the best fit line which is as shown in the above figure.</p>
+     <p>I hope you got a solid understanding of linear regression and how can we implement this using sklearn library.</p>
+   </div> 
+   </div>
+   </div>
+   </div>
+
+    <a id="top"><p id="arrow"></p></a>
+
+    <div class="main container">
+        <div class="row">
+            <div class="col-12">
+                <hr>
+                <p style="text-align: center;">All right reserved <span style="color: blue;">@bhisma</span> 2020</p>
+                <hr>
+        
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="../js/custom.js"></script>
+    
+    </body>
+    </html>
+    
+
+
