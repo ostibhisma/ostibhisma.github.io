@@ -6,10 +6,6 @@
 
 
 
-
-
-
-
 $(window).scroll(function(){
     if($(window).scrollTop()>100){
         $("#top").fadeIn();
