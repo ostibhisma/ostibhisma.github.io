@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+    <div class="container">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="../index.html">Bhisma Osti</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../blog.html">Blog</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Low-Level Virtual Machine(LLVM)</h1>
+                    <hr>
+                    <p> LLVM (Low-Level Virtual Machine) is a collection of tools and technologies designed to help
+                        programmers build software more efficiently. Imagine you are writing a program in a high-level
+                        language, like C++ or Python. Before the computer can run your program, it needs to convert it
+                        into something it understands, which is machine code (the language of 1s and 0s). This process
+                        of converting your program into machine code is called "compilation."
+
+                        <br>LLVM helps with this process, but instead of just creating machine code for one specific
+                        type of computer, it creates something called "Intermediate code." This intermediate code can
+                        then be converted into machine code for many different kinds of computers. This flexibility is
+                        one of LLVM's superpowers.
+
+                        To put it simply, LLVM is like a translator for computer programs. It helps take programs
+                        written in different programming languages and makes sure they can run on different types of
+                        computers smoothly. This is useful for things like making software run faster, work on different
+                        devices, or even improve the security of the code.
+
+                        So, think of LLVM as a tool that helps programmers make their code work better across different
+                        machines and platforms!<hr>
+                    </p>
+                    <h5>Intermediate Representation (IR)</h5>
+
+                    <p>LLVM's core strength lies in its Intermediate Representation (IR), which is a low-level,
+                        platform-independent code representation. The IR can be thought of as a form between source code
+                        (like C++ or Python) and machine code (specific to a CPU architecture). The beauty of IR is that
+                        it allows code optimizations to be applied at various stages of compilation without being tied
+                        to a specific machine's architecture.
+
+                        <br><b>* Static Single Assignment (SSA) form</b>: LLVM IR is represented in SSA form, which
+                        makes optimizations easier to implement and reason about.
+                        <br><b>* Three-phase compilation</b>: Frontend (generates IR from source), Optimizer (improves
+                        IR), and Backend (generates machine-specific code from optimized IR).
+                    </p><hr>
+
+                    <h5>Frontend, Optimizer, Backend</h5>
+                    <p> <b>* Frontend</b>: This part converts the source code written in a high-level language (e.g., C,
+                        C++, Rust, Swift) into LLVM's IR. There are many frontends like Clang (for C/C++), which use
+                        LLVM to generate IR.
+                        <br><b>* Optimizer</b>:The optimizer takes the IR and applies a series of transformations to
+                        make the code faster and smaller. This includes loop unrolling, constant propagation, dead code
+                        elimination, etc.
+                        <br><b>* Backend</b>: Finally, the backend converts the optimized IR into machine code for a
+                        specific architecture (x86, ARM, etc.). LLVM supports a wide range of architectures, making it
+                        highly portable.
+                    </p><hr>
+
+                    <h5>Modular Design</h5>
+                    <P>LLVM is highly modular. It provides APIs and libraries for each stage of compilation, so
+                        developers can pick and choose which parts of LLVM they want to use. This makes it possible to
+                        integrate LLVM into a wide variety of tools beyond compilers, like code analysis tools,
+                        interpreters, and Just-In-Time (JIT) compilers.</P><hr>
+
+                    <h5>Just-In-Time (JIT) Compilation</h5>
+                    <p>LLVM also supports JIT compilation, meaning it can compile code dynamically at runtime. This
+                        feature is used in environments where performance is critical, such as in virtual machines (VMs)
+                        like those used in languages like JavaScript, Python (e.g., PyPy), or gaming engines.</p><hr>
+
+                    <h4>Implementation</h4>
+                    <p>Let's break down how LLVM works by using a simple C code example. We’ll go through the frontend,
+                        optimizer, and backend stages as LLVM would handle it.</p>
+                    <b>hello.c</b><br>
+                    <img src="images/llvm02/llvm01.png" alt="hello.c">
+                    <p>Now let's walk through how LLVM would process this:</p><hr>
+                    <b>1. Frontend: Generating LLVM Intermediate Representation (IR)</b><br>
+                    <p>When you compile this C code using a frontend like Clang (which uses LLVM), the first step is to
+                        convert the high-level C code into LLVM Intermediate Representation (IR). This IR is
+                        machine-independent and easier for LLVM to optimize.
+                        <br>To see the IR, you can run this command:
+                    </p>
+                    <img src="images/llvm02/llvm02.png" alt="">
+                    <p> Here, <br>-S: Instructs Clang to generate an intermediate file instead of an object file.<br>
+                        -emit-llvm: Tells Clang to emit LLVM IR rather than native assembly or machine code.<br>
+                        -o hello.ll: Specifies the output file (hello.ll) to store the LLVM IR.</p>
+                    <p>This will produce an .ll file that contains the LLVM IR for the code. Here’s a simplified version
+                        of what the LLVM IR for our C code might look like:</p>
+                    <img src="images/llvm02/llvm04.png" alt="" width="100%">
+
+                    <hr><b>What’s happening here?</b>
+                    <p><b>add function:</b> The C function add is represented with LLVM IR instructions. For example, %0
+                        = add i32 %a, %b is an IR instruction that adds the two integers.
+                        <br><b>main function:</b> The main function calls add(5, 3), stores the result in %result, and
+                        then prints it using printf.
+                    </p><hr>
+                    <b>2. Optimizer: Improving the IR</b>
+                    <p>Once we have the IR, LLVM's optimizer can apply various transformations to make the code more
+                        efficient. These optimizations can include removing unnecessary code, simplifying expressions,
+                        and more.
+
+                        For example, since we know that add(5, 3) always results in 8, the optimizer could simplify
+                        this:</p>
+                    <b>Before optimization:</b>
+                    <samp>
+                        %result = call i32 @add(i32 5, i32 3)
+
+                    </samp><br>
+                    <b>After optimization:</b>
+                    <samp>
+                        %result = i32 8
+                    </samp><br>
+                    <b>LLVM can run optimizations using:</b>
+                    <samp>
+                        opt -O2 hello.ll -o optimized.ll
+
+                    </samp><br>
+                    <hr>
+                    <b>What’s happening?</b>
+                    <p>The optimizer can replace function calls with constant values if it can deduce the result
+                        (constant propagation).<br>
+                        It can remove any dead code (code that doesn't affect the program outcome), like unnecessary
+                        calculations.</p><hr>
+                    <p><b>3. Backend: Generating Machine Code</b></p>
+                    <p>Finally, once the IR has been optimized, LLVM converts the IR into machine code specific to the
+                        target platform (like x86, ARM, etc.). This process is done by the backend.
+
+                        <br>You can generate the assembly or machine code using:
+                    </p>
+                    <samp>clang optimized.ll -o hello
+                    </samp>
+                    <p>This command produces an executable file that your machine can run. It converts the optimized IR
+                        into instructions specific to your computer’s CPU architecture (e.g., x86 or ARM assembly
+                        instructions). If we run this executable file i.e hello then we get desire output using llvm.
+                    </p>
+                    <img src="images/llvm02/llvm05.png" alt=""><hr>
+                    <h4>Application</h4>
+                    <p><b>Compiler toolchains:</b> Clang, Rust, Swift use LLVM as their backend.<br>
+                        <b>Language development:</b> If you're developing your own programming language, LLVM simplifies
+                        the process of generating efficient machine code.<br>
+                        <b>Optimizers:</b> LLVM can be used to optimize existing codebases.<br>
+                        <b>JIT execution:</b> Used in environments requiring runtime compilation, like virtual machines.
+                    </p>
+                    <h4>Summary</h4><hr>
+                    <p>In short, LLVM abstracts the process of generating machine code for different architectures and
+                        provides an extensible framework for optimizations and runtime compilation. It has become an
+                        essential part of modern compilers due to its portability, performance, and ease of use in
+                        multiple programming contexts.</p>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a id="top">
+        <p id="arrow"></p>
+    </a>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="../js/custom.js"></script>
+
+</body>
+
+</html>
