@@ -1,90 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Bhisma Osti</title>
+    <title>Blog | Bhisma Osti</title>
+    <style>
+        .blog-post {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 2px dashed #ccc;
+        }
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        .blog-date {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #666;
+            min-width: 120px;
+        }
+        .blog-title a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .blog-title a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
 </head>
-
 <body>
 
     <div class="container">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <nav class="navbar">
             <a class="navbar-brand" href="index.html">Bhisma Osti</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Blog</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+            </div>
         </nav>
-    </div>
-    <div class="container">
-        <div class="col-md-12">
+
+        <div class="main">
             <div class="card">
-                <div class="card-body">
-                    <h4><a href="blogs/football_journey.html">The Last Goal: What Football Taught Me That No Classroom Could</a></h4>
-                    <p><i>2026-04-20</i></p>
+                <h4>Blog Posts</h4>
+                <div class="blog-list">
+                    <div class="blog-post">
+                        <div class="blog-title">
+                            <a href="blogs/llvm02.html">What is Low-Level Virtual Machine (LLVM)</a>
+                        </div>
+                        <div class="blog-date">2024-09-09</div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="blog-title">
+                            <a href="blogs/Linear_Regression01.html">Linear Regression From Scratch</a>
+                        </div>
+                        <div class="blog-date">2022-07-11</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4><a href="blogs/Linear_Regression01.html">Linear Regression From Scratch</a></h4>
-                    <p><i>2022-07-11</i></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4><a href="blogs/llvm02.html">What is Low-Level Virtual Machine(LLVM)</a></h4>
-                    <p><i>2024-09-09</i></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <a id="top">
-        <p id="arrow"></p>
-    </a>
-
-    <!-- <div class="main container">
-        <div class="row">
-            <div class="col-12">
+            <div class="footer text-center">
                 <hr>
-                <p style="text-align: center;">All right reserved <span style="color: blue;">@bhisma</span> 2020</p>
-                <hr>
-
+                <p>All rights reserved @bhisma 2026</p>
             </div>
         </div>
-    </div> -->
+    </div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/custom.js"></script>
-
 </body>
-
 </html>

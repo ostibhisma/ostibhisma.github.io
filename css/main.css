@@ -1,114 +1,212 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --accent-color: #ff3e00; /* Vibrant orange-red */
+    --border-width: 3px;
+    --shadow-offset: 6px;
+    --font-mono: 'Space Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background-color:whitesmoke;
-    font-family: 'Open Sans', sans-serif;
-} 
-
-h4,h2,p{
-    font-weight: bold;
-    text-align:justify;
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 20px 20px; /* Blueprint grid effect */
 }
 
-.main{
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-.navbar{
-    background-color:whitesmoke;
-
-}
-.navbar-brand{
-    font-weight: bold;
-    font-family: cursive;
-}
-.activenav{
-    font-weight: bold;
-    background-color: rgb(236, 236, 236);
-}
-#profile-pic{
-    width: 165px;
-    height: 165px;
-    border-radius: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
-#profile-wrapper{
-    text-align: center;
+.container {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-ul{
-    padding: 0;
-    list-style-type: none;
-}
-.social-media ul,li{
-    list-style-type: none;
-    display: inline-block;
-}
-.social{
-    width: 20px;
-    height: 20px;
+/* Typography */
+h1, h2, h3, h4, .navbar-brand {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-.btn-facebook {
-	color: #fff;
-	background-color: #4C67A1;
-}
-.btn-facebook:hover {
-	color: #fff;
-	background-color: rgb(14, 36, 87);
-}
-.btn-facebook:focus {
-	color: #fff;
+h1 { font-size: 2.5rem; }
+h4 { font-size: 1.25rem; border-bottom: 2px solid var(--text-color); display: inline-block; padding-bottom: 4px; margin-bottom: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
 }
 
-.btn-linkedin {
-    background: #0E76A8;
-    border-radius: 5px;
-    color: #fff;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #084461;
-  }
-  .btn-linkedin:link, .btn-linkedin:visited {
-    color: #fff;
-  }
-  .btn-linkedin:active, .btn-linkedin:hover {
-    background: #0e4662;
-    color: #fff;
-  }
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: var(--border-width) solid var(--text-color);
+    background: var(--bg-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--text-color);
+    margin-bottom: 3rem;
+}
 
-  #top{
-      background-color:red;
-      color: white;
-      padding: 15px;
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      cursor: pointer;
-      border-radius: 50%;
-      text-align: center;
-      z-index: 5 ;
-      height: 35px;
-      width: 35px;
-      line-height: 35px;
-      display: none;
-  }
+.navbar-brand {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
 
-  #arrow{
-      border: solid white;
-      border-width: 0px 0px 3px 3px;
-      padding: 5px;
-      display: inline-block;
-      transform: rotate(130deg);
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    margin-left: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    border: 2px solid transparent;
+}
 
-  }
+.nav-links a:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--text-color);
+}
 
-  /* @media screen and (max-width: 480px) {
-    #topBtn{
-        background-color: chartreuse;
+/* Cards */
+.card {
+    background: var(--bg-color);
+    border: var(--border-width) solid var(--text-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--text-color);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--text-color);
+}
+
+/* Grid System (Simplified) */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.col-md-3 { flex: 0 0 calc(25% - 1.5rem); }
+.col-md-9 { flex: 0 0 calc(75% - 0.5rem); }
+.col-md-6 { flex: 0 0 calc(50% - 1rem); }
+.col-md-12 { flex: 0 0 100%; }
+
+@media (max-width: 768px) {
+    .col-md-3, .col-md-9, .col-md-6, .col-md-12 {
+        flex: 0 0 100%;
     }
-  } */
+}
+
+/* Social Media */
+.social-media {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-media li {
+    list-style: none;
+}
+
+.social-media a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--text-color);
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: 0.2s;
+}
+
+.social-media a:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: rotate(-5deg);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--text-color);
+    font-family: var(--font-sans);
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 4px 4px 0px var(--accent-color);
+}
+
+.btn-primary {
+    background: var(--text-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--text-color);
+}
+
+/* Utils */
+hr {
+    border: none;
+    border-top: 2px solid var(--text-color);
+    margin: 1.5rem 0;
+}
+
+.text-center { text-align: center; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-color);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
